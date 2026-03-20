@@ -174,7 +174,7 @@ Through this project, I gained hands-on experience in:
 ---
 
 ## 🔗 Project Link
-👉 https://github.com/liyabona-dev/sql-retail-database 
+👉 https://github.com/liyabona-dev/sql-retail-sales-and-customer-analytics
 
 ---
 
