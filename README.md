@@ -108,12 +108,12 @@ Created SQL views to simplify reporting and support business insights:
 ## 📊 Sample Query Results
 
 ### 🔹 Top Customers by Spending
-![Top Customers](./Screenshots/query-results-1.png)
+![Top Customers](./Screenshots/customer_spending.png)
 
 Shows the highest spending customers, helping identify high-value clients for targeted marketing.
 
 ### 🔹 Monthly Revenue Trend
-![Revenue Trend](./Screenshots/query-results-2.png)
+![Revenue Trend](./Screenshots/monthly-revenue.png)
 
 Provides a month-by-month breakdown of total revenue, helping identify seasonal patterns, peak sales periods, and potential slow months that may require strategic intervention.
 
