@@ -1,32 +1,23 @@
 # 🛒 Retail Sales & Customer Analytics (SQL Server Project)
 
 ## 📌 Project Overview
-This project simulates a real-world retail business environment, focusing on order management, customer behavior, and sales analytics.
+A relational database system built in SQL Server to simulate a retail environment, supporting both transactional processing and analytical workloads.
 
-The goal of this project is to design and implement a **relational database system** that supports both **transactional operations** (orders, payments) and **analytical reporting** for business decision-making.
-
-It demonstrates how raw transactional data can be transformed into meaningful insights using SQL Server.
+The project focuses on database design, query optimization, and backend logic, using T-SQL to manage data integrity and generate performant business queries
 
 ---
 
-## 🧠 Business Problem
-Retail businesses generate large volumes of data daily, including:
-- Customer purchases
-- Product sales
-- Payment transactions
+## 🧠 Objective
+Design and implement a scalable, normalized database system that:
 
-However, without proper structure and analysis, this data cannot effectively support:
-- Revenue tracking
-- Customer insights
-- Product performance analysis
-
-This project solves that by building a **structured database system** and delivering **analytical queries and reports**.
-
+Handles core retail transactions (orders, products, payments)
+Ensures data integrity through constraints and relationships
+Supports analytical queries without compromising performance
 ---
 
 ## 🏗️ Database Design
 
-### ✔️ Key Entities:
+### ✔️ Core Entities:
 - Customers
 - Orders
 - OrderItems
@@ -34,11 +25,21 @@ This project solves that by building a **structured database system** and delive
 - Employees
 - Payments
 
-### ✔️ Features:
-- Fully normalized relational schema
-- Primary & foreign key constraints
-- Data integrity enforcement
+### ✔️ Design Approach
+- Structured using Third Normal Form (3NF) to eliminate redundancy
+- Enforced primary and foreign key constraints for referential integrity
+- Separated transactional and analytical concerns using views
 - ERD (Entity Relationship Diagram)
+
+### 🔹 Relationships (Simplified)
+- Customers (CustomerID PK)
+- Orders (OrderID PK, CustomerID FK, EmployeeID FK)
+- OrderItems (OrderItemID PK, OrderID FK, ProductID FK)
+- Products (ProductID PK)
+- Payments (PaymentID PK, OrderID FK)
+- Employees (EmployeeID PK)
+  
+The schema ensures consistency across transactions while allowing efficient JOIN operations for reporting.
 
 ---
 
@@ -46,40 +47,40 @@ This project solves that by building a **structured database system** and delive
 
 ### 🔹 Transactional Logic (Stored Procedures)
 
-This project includes stored procedures that simulate real business operations:
+Implemented stored procedures to simulate real-world operations and enforce consistency:
 
-- `AddCustomer` – Inserts new customers into the system with controlled input handling  
-- `AddEmployees` – Adds employee records to support order processing and tracking  
-- `AddProducts` – Manages product catalog entries, including pricing and categorization  
-- `CreateOrdersWithItems` – Handles order creation and item insertion in a single operation, ensuring data consistency  
-- `RecordPayments` – Records payments and automatically calculates total order value from order items  
+- `AddCustomer` – Inserts validated customer records 
+- `AddEmployees` – Manages employee data for operational tracking
+- `AddProducts` – Handles product catalog with pricing logic 
+- `CreateOrdersWithItems` – Atomically creates orders and associated items 
+- `RecordPayments` – Records payments and derives totals from order data 
 
-Example executions are included to demonstrate real usage.
+Transactions are structured to maintain atomicity and consistency, reducing risk of partial writes.
 
 ---
 
 ### 🔹 Analytical Queries
-The project includes real business-focused SQL queries such as:
+Designed queries to support business reporting while maintaining efficiency:
 
-- Total revenue generated
-- Top customers by spending
-- Best-selling products
-- Revenue by category
+- Revenue aggregation
+- Customer ranking by spend
+- Product performance analysis
+- Category-level revenue breakdown
 - Monthly sales trends
-- High-value orders
+- High-value transaction detection
 
 ---
 
 ### 🔹 Advanced SQL Features
-- Complex JOIN operations
-- Subqueries & Correlated Subqueries
-- Common Table Expressions (CTEs)
-- Window Functions:
-  - RANK()
-  - DENSE_RANK()
-  - ROW_NUMBER()
-  - LAG()
-- Aggregations and grouping
+- Complex multi-table JOINs
+- Subqueries & correlated subqueries
+- Common Table Expressions (CTEs) for modular query design
+- Window functions:
+RANK()
+DENSE_RANK()
+ROW_NUMBER()
+LAG()
+- Aggregations using GROUP BY and HAVING
 
 ---
 
@@ -91,11 +92,13 @@ The project includes real business-focused SQL queries such as:
 ---
 
 ### 🔹 Reporting Layer (Views)
-Created SQL views to simplify reporting and support business insights:
-- Order summaries
-- Employee sales performance reports
-- Customer spending reports
-- Product sales performance reports
+Created reusable SQL views to abstract complexity:
+- Customer spending summary
+- Product sales performance
+- Employee sales contribution
+- Order-level summaries
+- 
+Views act as a lightweight reporting layer for BI tools or dashboards.
 
 ---
 
@@ -133,6 +136,13 @@ Provides a month-by-month breakdown of total revenue, helping identify seasonal 
 - Microsoft SQL Server 2022
 - SQL Server Management Studio (SSMS)
 - T-SQL
+
+---
+
+▶️ How to Run
+Execute schema.sql to create tables
+Run data_inserts.sql to populate sample data
+Execute stored procedures and analytical queries from respective scripts
 
 ---
 
